@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HKW Financial — Corporate Financial Services</title>
+  <meta name="description" content="HKW Financial — corporate financial services. Investment advisory, wealth management, corporate banking." />
+
+  <!-- Google font (works when online) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --blue-900: #08365f; /* deep navy */
+      --blue-700: #0f5fa8; /* main brand blue */
+      --blue-500: #2b87d6; /* accent */
+      --silver-900: #2f3640; /* dark silver */
+      --silver-500: #9aa3ac; /* light silver */
+      --bg: #ffffff;
+      --glass: rgba(255,255,255,0.6);
+      --radius: 14px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial; color:var(--silver-900);background:linear-gradient(180deg,#f8fbff 0%,#f1f6fb 100%)}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;padding:22px 36px;max-width:1200px;margin:20px auto;border-radius:12px}
+    .brand{display:flex;align-items:center;gap:14px}
+
+    /* Logo (SVG) */
+    .logo{display:inline-flex;align-items:center;gap:12px}
+    .logo svg{width:52px;height:52px}
+    .brand h1{font-size:20px;margin:0;color:var(--blue-900);letter-spacing:1px}
+    .brand p{margin:0;font-size:12px;color:var(--silver-500)}
+
+    /* Nav */
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:var(--silver-900);text-decoration:none;font-weight:600}
+    .cta{background:linear-gradient(90deg,var(--blue-700),var(--blue-500));color:white;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+
+    /* Hero */
+    .hero{max-width:1200px;margin:12px auto 40px;padding:40px;background:linear-gradient(180deg,rgba(11,55,110,0.04),rgba(11,55,110,0.01));border-radius:18px;display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:center}
+    .hero-left h2{margin:0;font-size:36px;color:var(--blue-900)}
+    .hero-left p{color:var(--silver-900);font-size:16px;line-height:1.5;margin-top:12px}
+
+    .cta-row{display:flex;gap:12px;margin-top:20px}
+
+    .card{background:white;border-radius:16px;padding:18px;box-shadow:0 6px 20px rgba(12,45,90,0.06);border:1px solid rgba(11,55,110,0.03)}
+    .signup{display:flex;flex-direction:column;gap:12px}
+    .signup input,.signup select{padding:12px;border-radius:10px;border:1px solid #e6eef9}
+    .signup button{padding:12px;border-radius:10px;border:0;background:linear-gradient(90deg,var(--blue-700),var(--blue-500));color:white;font-weight:700}
+
+    /* Services grid */
+    .services{max-width:1200px;margin:0 auto 40px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service{padding:20px;border-radius:12px;background:white;border:1px solid rgba(11,55,110,0.03);box-shadow:0 8px 30px rgba(12,45,90,0.03)}
+    .service h3{margin:8px 0 6px}
+    .service p{margin:0;color:var(--silver-500)}
+
+    /* Features */
+    .features{max-width:1200px;margin:0 auto 40px;display:flex;gap:18px;align-items:stretch}
+    .feature-left{flex:1}
+    .feature-right{flex:1;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+
+    /* Pricing */
+    .plans{max-width:1200px;margin:0 auto 48px;display:flex;gap:18px}
+    .plan{flex:1;padding:20px;border-radius:12px;background:linear-gradient(180deg,#fff,#f8fbff);border:1px solid rgba(11,55,110,0.04);text-align:center}
+    .plan h4{margin:6px 0}
+    .plan .price{font-size:28px;color:var(--blue-700);font-weight:800}
+
+    /* Contact */
+    .contact{max-width:1200px;margin:0 auto 60px;padding:28px;border-radius:12px;background:linear-gradient(180deg,rgba(11,55,110,0.02),rgba(11,55,110,0.01));display:flex;gap:18px}
+    .contact form{flex:1;display:grid;gap:12px}
+    .contact aside{width:320px}
+
+    footer{max-width:1200px;margin:30px auto;padding:22px;text-align:center;color:var(--silver-500)}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .services{grid-template-columns:1fr 1fr}
+      .features{flex-direction:column}
+      .plans{flex-direction:column}
+      .contact{flex-direction:column}
+    }
+    @media (max-width:600px){
+      nav{display:none}
+      header{padding:14px}
+      .brand h1{font-size:16px}
+      .hero-left h2{font-size:22px}
+      .services{grid-template-columns:1fr}
+    }
+
+    /* subtle interactive touches */
+    .service:hover{transform:translateY(-6px);transition:all .36s cubic-bezier(.2,.9,.3,1);box-shadow:0 12px 40px rgba(11,55,110,0.08)}
+    .plan.popular{border:2px solid var(--blue-700);box-shadow:0 18px 50px rgba(11,55,110,0.08)}
+
+    .muted{color:var(--silver-500);font-size:13px}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <!-- simple globe + shield monogram SVG -->
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HKW Financial logo">
+          <circle cx="32" cy="32" r="30" fill="none" stroke="var(--blue-700)" stroke-width="3" />
+          <g stroke="var(--blue-700)" stroke-width="2" stroke-linecap="round">
+            <path d="M4 32h56" />
+            <path d="M32 4v56" />
+            <path d="M12 12c6 4 12 4 20 0" stroke-linejoin="round" />
+            <path d="M52 52c-6-4-12-4-20 0" stroke-linejoin="round" />
+          </g>
+        </svg>
+      </div>
+      <div>
+        <h1>HKW Financial</h1>
+        <p class="muted">Global. Trusted. Strategic.</p>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#plans">Plans</a>
+      <a href="#contact">Contact</a>
+      <a class="cta" href="#contact">Get Started</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-left">
+        <h2>Strategic financial solutions for modern enterprises</h2>
+        <p>HKW Financial partners with businesses and high-net-worth individuals to deliver investment advisory, corporate finance and wealth management solutions grounded in data, governance and trust.</p>
+        <div class="cta-row">
+          <a class="cta" href="#contact">Request a Consultation</a>
+          <a href="#services" style="padding:10px 16px;border-radius:10px;border:1px solid var(--blue-700);text-decoration:none;font-weight:700;color:var(--blue-700);background:transparent">View Services</a>
+        </div>
+
+        <div style="display:flex;gap:14px;margin-top:18px">
+          <div class="card" style="display:flex;gap:12px;align-items:center">
+            <div style="width:46px;height:46px;border-radius:10px;background:linear-gradient(180deg,var(--blue-700),var(--blue-500));display:flex;align-items:center;justify-content:center;color:white;font-weight:800">24/7</div>
+            <div>
+              <div style="font-weight:700">Always available</div>
+              <div class="muted">Support and reporting whenever you need it</div>
+            </div>
+          </div>
+
+          <div class="card" style="display:flex;gap:12px;align-items:center">
+            <div style="width:46px;height:46px;border-radius:10px;background:linear-gradient(180deg,var(--silver-500),#d1d7db);display:flex;align-items:center;justify-content:center;color:var(--silver-900);font-weight:800">✓</div>
+            <div>
+              <div style="font-weight:700">Regulated</div>
+              <div class="muted">Compliant with global financial standards</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card">
+        <div style="font-weight:700;margin-bottom:8px">Start with a free assessment</div>
+        <form class="signup" id="leadForm" onsubmit="return false;">
+          <input type="text" id="name" placeholder="Full name" required />
+          <input type="email" id="email" placeholder="Work email" required />
+          <select id="interest">
+            <option value="investment">Investment Advisory</option>
+            <option value="wealth">Wealth Management</option>
+            <option value="corporate">Corporate Finance</option>
+            <option value="banking">Corporate Banking</option>
+          </select>
+          <button id="leadSubmit">Get my assessment</button>
+          <div id="leadMsg" class="muted" style="font-size:13px"></div>
+        </form>
+      </aside>
+
+    </section>
+
+    <section id="services" class="services">
+      <div class="service">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none" style="display:block;margin-bottom:8px"><path d="M3 12h18" stroke="var(--blue-700)" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <h3>Investment Advisory</h3>
+        <p>Customized portfolios, risk modelling and performance monitoring designed for long-term growth.</p>
+        <ul style="margin-top:10px;color:var(--silver-500);line-height:1.6;font-size:14px">
+          <li>Tailored portfolio construction</li>
+          <li>Ongoing performance reporting</li>
+          <li>Tax-efficient strategies</li>
+        </ul>
+        <div style="margin-top:12px"><a href="#contact" class="cta" style="padding:8px 12px;border-radius:8px;font-size:14px">Request Advisory</a></div>
+      </div>
+
+      <div class="service">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none" style="display:block;margin-bottom:8px"><path d="M12 2v20" stroke="var(--blue-700)" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <h3>Wealth Management</h3>
+        <p>Discreet, tax-aware wealth planning and family office services that protect legacy and liquidity.</p>
+        <ul style="margin-top:10px;color:var(--silver-500);line-height:1.6;font-size:14px">
+          <li>Family office services</li>
+          <li>Estate & trust planning</li>
+          <li>Private markets access</li>
+        </ul>
+        <div style="margin-top:12px"><a href="#contact" class="cta" style="padding:8px 12px;border-radius:8px;font-size:14px">Speak to an RM</a></div>
+      </div>
+
+      <div class="service">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none" style="display:block;margin-bottom:8px"><path d="M4 4h16v16H4z" stroke="var(--blue-700)" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <h3>Corporate Finance</h3>
+        <p>Capital raising, M&A advisory and strategic capital structuring with a data-first approach.</p>
+        <ul style="margin-top:10px;color:var(--silver-500);line-height:1.6;font-size:14px">
+          <li>M&A advisory & execution</li>
+          <li>Debt and equity structuring</li>
+          <li>Due diligence & valuation</li>
+        </ul>
+        <div style="margin-top:12px"><a href="#contact" class="cta" style="padding:8px 12px;border-radius:8px;font-size:14px">Start a Project</a></div>
+      </div>
+
+      <!-- New service listings: Loans, Investments, Consulting -->
+      <div class="service">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none" style="display:block;margin-bottom:8px"><path d="M12 3c4 0 8 1.5 8 5s-4 5-8 5-8-1.5-8-5 4-5 8-5zM4 21c4 0 8 1.5 8 5s-4 5-8 5-8-1.5-8-5 4-5 8-5z" stroke="var(--blue-700)" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <h3>Loans</h3>
+        <p>Flexible lending solutions for corporations and growth-stage businesses with competitive terms.</p>
+        <ul style="margin-top:10px;color:var(--silver-500);line-height:1.6;font-size:14px">
+          <li>Working capital & term loans</li>
+          <li>Project finance and asset-backed lending</li>
+          <li>Structured financing options</li>
+        </ul>
+        <div style="margin-top:12px"><a href="#contact" class="cta" style="padding:8px 12px;border-radius:8px;font-size:14px">Apply for Loan</a></div>
+      </div>
+
+      <div class="service">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none" style="display:block;margin-bottom:8px"><path d="M3 12l4 4 8-8 6 6" stroke="var(--blue-700)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Investments</h3>
+        <p>Access curated investment opportunities across public and private markets to meet your return objectives.</p>
+        <ul style="margin-top:10px;color:var(--silver-500);line-height:1.6;font-size:14px">
+          <li>Public equities & fixed income</li>
+          <li>Private equity & venture deals</li>
+          <li>Alternative investments & real assets</li>
+        </ul>
+        <div style="margin-top:12px"><a href="#contact" class="cta" style="padding:8px 12px;border-radius:8px;font-size:14px">Explore Opportunities</a></div>
+      </div>
+
+      <div class="service">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none" style="display:block;margin-bottom:8px"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7l3-7z" stroke="var(--blue-700)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Consulting</h3>
+        <p>Strategic consulting to improve capital efficiency, risk management and organisational performance.</p>
+        <ul style="margin-top:10px;color:var(--silver-500);line-height:1.6;font-size:14px">
+          <li>Strategic finance & restructuring</li>
+          <li>Risk, compliance & governance</li>
+          <li>Digital transformation for finance teams</li>
+        </ul>
+        <div style="margin-top:12px"><a href="#contact" class="cta" style="padding:8px 12px;border-radius:8px;font-size:14px">Request Consulting</a></div>
+      </div>
+
+    </section>
+
+    <section class="features">
+      <div class="feature-left card">
+        <h3>Why clients choose HKW</h3>
+        <p class="muted">We combine institutional-grade research with pragmatic execution and a client-first service model.</p>
+        <ul style="margin-top:12px;color:var(--silver-900);line-height:1.8">
+          <li>Transparent fees and reporting</li>
+          <li>Proven investment processes</li>
+          <li>Dedicated relationship managers</li>
+          <li>Enterprise-grade cybersecurity</li>
+        </ul>
+      </div>
+
+      <div class="feature-right">
+        <div class="card">
+          <h4 style="margin:0">Performance</h4>
+          <p class="muted">Active risk management and tailored benchmarks</p>
+        </div>
+        <div class="card">
+          <h4 style="margin:0">Governance</h4>
+          <p class="muted">Strong internal controls and compliance</p>
+        </div>
+        <div class="card">
+          <h4 style="margin:0">Technology</h4>
+          <p class="muted">Modern reporting and secure client portal</p>
+        </div>
+        <div class="card">
+          <h4 style="margin:0">Advice</h4>
+          <p class="muted">Independent, fiduciary-first guidance</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="plans" class="plans" aria-label="Plans">
+      <div class="plan">
+        <div class="muted">Starter</div>
+        <h4>Core Advisory</h4>
+        <div class="price">$1,500<span style="font-size:13px;font-weight:600;color:var(--silver-500)"> / mo</span></div>
+        <p class="muted">For growing businesses seeking structured advice</p>
+        <div style="margin-top:12px"><button style="padding:10px 16px;border-radius:10px;border:1px solid var(--blue-700);background:transparent;color:var(--blue-700);font-weight:700">Choose</button></div>
+      </div>
+
+      <div class="plan popular">
+        <div class="muted">Pro</div>
+        <h4>Wealth Plus</h4>
+        <div class="price">$4,200<span style="font-size:13px;font-weight:600;color:var(--silver-500)"> / mo</span></div>
+        <p class="muted">Comprehensive wealth management with dedicated RM</p>
+        <div style="margin-top:12px"><button style="padding:10px 16px;border-radius:10px;border:0;background:linear-gradient(90deg,var(--blue-700),var(--blue-500));color:white;font-weight:700">Choose</button></div>
+      </div>
+
+      <div class="plan">
+        <div class="muted">Enterprise</div>
+        <h4>Corporate Solutions</h4>
+        <div class="price">Custom</div>
+        <p class="muted">Tailored corporate finance & capital markets</p>
+        <div style="margin-top:12px"><button style="padding:10px 16px;border-radius:10px;border:1px solid var(--blue-700);background:transparent;color:var(--blue-700);font-weight:700">Enquire</button></div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <form class="card" onsubmit="return false;" id="contactForm">
+        <h3>Contact our team</h3>
+        <input type="text" id="cname" placeholder="Full name" required />
+        <input type="email" id="cemail" placeholder="Email" required />
+        <input type="tel" id="cphone" placeholder="Phone" />
+        <select id="serviceOpt">
+          <option>Investment Advisory</option>
+          <option>Wealth Management</option>
+          <option>Corporate Finance</option>
+        </select>
+        <textarea id="cmessage" rows="4" placeholder="Tell us briefly about your needs"></textarea>
+        <button id="contactSubmit" style="padding:12px;border-radius:10px;border:0;background:linear-gradient(90deg,var(--blue-700),var(--blue-500));color:white;font-weight:700">Send message</button>
+        <div id="contactMsg" class="muted" style="margin-top:8px"></div>
+      </form>
+
+      <aside class="card">
+        <h4>Office</h4>
+        <p class="muted">San Juan, Puerto Rico, USA</p>
+        <p class="muted">Email: hkwfinancial@yahoo.com</p>
+        <p class="muted">Phone: 00</p>
+
+        <div style="height:12px"></div>
+        <h4>Quick links</h4>
+        <ul style="padding-left:18px;margin-top:8px;color:var(--silver-900)">
+          <li><a href="#" style="color:var(--blue-700);text-decoration:none">Client Portal</a></li>
+          <li><a href="#" style="color:var(--blue-700);text-decoration:none">Legal & Privacy</a></li>
+        </ul>
+      </aside>
+    </section>
+
+  </main>
+
+  <footer>
+    <div>© <strong>HKW Financial</strong> — All rights reserved</div>
+  </footer>
+
+  <script>
+    // Simple client-side interactions
+    document.getElementById('leadSubmit').addEventListener('click', () => {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('leadMsg');
+      if (!name || !email) { msg.textContent = 'Please provide your name and email.'; return; }
+      msg.textContent = 'Thanks, ' + (name.split(' ')[0] || name) + '! We will email a free assessment to ' + email + '.';
+      msg.style.color = 'var(--blue-700)';
+
+      // Simulate local 'lead capture' (in real app post to API)
+      console.log('Lead captured', {name,email,interest:document.getElementById('interest').value});
+    });
+
+    document.getElementById('contactSubmit').addEventListener('click', () => {
+      const cname = document.getElementById('cname').value.trim();
+      const cemail = document.getElementById('cemail').value.trim();
+      const contactMsg = document.getElementById('contactMsg');
+      if (!cname || !cemail) { contactMsg.textContent = 'Please include name and email before sending.'; return; }
+      contactMsg.textContent = 'Message sent. Our team will contact you within 24 hours.';
+      contactMsg.style.color = 'var(--blue-700)';
+
+      console.log('Contact form', {cname,cemail,phone:document.getElementById('cphone').value,service:document.getElementById('serviceOpt').value,message:document.getElementById('cmessage').value});
+    });
+
+    // small accessibility: allow Enter to submit forms
+    ["leadForm","contactForm"].forEach(id => {
+      const f = document.getElementById(id);
+      if (!f) return;
+      f.addEventListener('keypress', (e)=>{ if (e.key === 'Enter') e.preventDefault(); });
+    });
+
+    // Simple animated counters (example)
+    function animateCounter(el, to){
+      let start = 0; const dur = 1100; const step = Math.ceil(to/(dur/16));
+      const iv = setInterval(()=>{ start += step; if (start>=to){ el.textContent = to; clearInterval(iv);} else { el.textContent = start; } },16);
+    }
+
+    // placeholder: animate some numbers if needed
+    // animateCounter(document.querySelector('.some-counter'), 250);
+
+  </script>
+</body>
+</html>
