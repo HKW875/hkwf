@@ -366,7 +366,7 @@
       const cemail = document.getElementById('cemail').value.trim();
       const contactMsg = document.getElementById('contactMsg');
       if (!cname || !cemail) { contactMsg.textContent = 'Please include name and email before sending.'; return; }
-      contactMsg.textContent = 'Message sent. Our team will contact you within 24 hours.';
+      contactMsg.textContent = 'Message sent. You can also email us directly at hkwfinancial@yahoo.com or chat with us directly via Whatsapp.';
       contactMsg.style.color = 'var(--blue-700)';
 
       console.log('Contact form', {cname,cemail,phone:document.getElementById('cphone').value,service:document.getElementById('serviceOpt').value,message:document.getElementById('cmessage').value});
